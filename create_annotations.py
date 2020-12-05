@@ -111,51 +111,30 @@ coco_format = {
     ],
     "categories": [
         {
-            "supercategory": "window",
-            "id": 1,
-            "name": 'window'
-        },
-        {
-            "supercategory": "wall",
-            "id": 2,
-            "name": 'wall'
-        },
-        {
-            "supercategory": "balcony",
-            "id": 3,
-            "name": 'balcony'
-        },
-        {
-            "supercategory": "door",
-            "id": 4,
-            "name": 'door'
-        },
-        {
-            "supercategory": "roof",
-            "id": 5,
-            "name": 'roof'
-        },
-        {
-            "supercategory": "sky",
-            "id": 6,
-            "name": 'sky'
-        },
-        {
-            "supercategory": "shop",
-            "id": 7,
-            "name": 'shop'
-        },
-        {
-            "supercategory": "chimney",
-            "id": 8,
-            "name": 'chimney'
-        },
-        {
-            "supercategory": "outlier",
+            "supercategory": "road",
             "id": 0,
-            "name": 'outlier'
+            "name": 'road'
         },
-        
+        {
+            "supercategory": "lane markings",
+            "id": 1,
+            "name": 'lane markings'
+        },
+        {
+            "supercategory": "undrivable",
+            "id": 2,
+            "name": 'undrivable'
+        },
+        {
+            "supercategory": "movable",
+            "id": 3,
+            "name": 'movable'
+        },
+        {
+            "supercategory": "my car",
+            "id": 4,
+            "name": 'my car'
+        }
     ],
     "annotations": [
         {
