@@ -1,13 +1,7 @@
 from create_annotations import *
-
-# Define which colors match which categories in the images
-category_ids = {
-    '(64, 32, 32)': 0, # road 
-    '(255, 0, 0)': 1, # lane markings
-    '(128, 128, 96)': 2, # undrivable
-    '(0, 255, 102)': 3, # movable 
-    '(204, 0, 255)': 4, # my car
-}
+import argparse
+from category_colors import *
+parser = argparse.ArgumentParser()
 
 # Get 'images' and 'annotations' info 
 def images_annotations_info(maskpath):
@@ -60,9 +54,18 @@ def images_annotations_info(maskpath):
     return images, annotations
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-d", "--dataset", help="dataset location",default='dataset/')
+    parser.add_argument("-o", "--output", help="output directory",default='output/')
+    parser.parse_args()
+    datasetpath = parser.parse_args().dataset
+    outputpath = parser.parse_args().output
+    print("dataset path : " + datasetpath)
+    print("output path : " + outputpath)
+
     for keyword in ['train', 'val']:
-        mask_path = 'dataset/{}_mask'.format(keyword)
+        mask_path = datasetpath + '{}_mask'.format(keyword)
         coco_format['images'], coco_format['annotations'] = images_annotations_info(mask_path)
         #print(json.dumps(coco_format))
-        with open('output/{}.json'.format(keyword),'w') as outfile:
+        with open(outputpath + '{}.json'.format(keyword),'w') as outfile:
             json.dump(coco_format, outfile)

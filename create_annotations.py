@@ -4,6 +4,7 @@ from skimage import measure                        	# (pip install scikit-image)
 from shapely.geometry import Polygon, MultiPolygon 	# (pip install Shapely)
 import os
 import json
+from coco_format import *
 
 def create_sub_masks(mask_image, width, height):
     # Initialize a dictionary of sub-masks indexed by RGB colors
@@ -100,44 +101,3 @@ def create_annotation_format(polygon, segmentation, image_id, category_id, annot
     }
 
     return annotation
-
-# Create the annotations of the ECP dataset (Coco format) 
-coco_format = {
-    "info": {},
-    "licenses": [],
-    "images": [
-        {
-        }
-    ],
-    "categories": [
-        {
-            "supercategory": "road",
-            "id": 0,
-            "name": 'road'
-        },
-        {
-            "supercategory": "lane markings",
-            "id": 1,
-            "name": 'lane markings'
-        },
-        {
-            "supercategory": "undrivable",
-            "id": 2,
-            "name": 'undrivable'
-        },
-        {
-            "supercategory": "movable",
-            "id": 3,
-            "name": 'movable'
-        },
-        {
-            "supercategory": "my car",
-            "id": 4,
-            "name": 'my car'
-        }
-    ],
-    "annotations": [
-        {
-        }
-    ]
-}
