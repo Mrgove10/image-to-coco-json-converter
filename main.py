@@ -13,10 +13,18 @@ def images_annotations_info(maskpath):
     
     # Get absolute paths of all files in a directory
     mask_images = absolute_file_paths(maskpath)
-  
+    
+    #get number of masks
+    number_of_masks = len(mask_images)
+    print("found " + number_of_masks + " masks")
+    
+    start = 1
+    
     for image_id, mask_image in enumerate(mask_images, 1):
         file_name = os.path.basename(mask_image).split('.')[0] + ".jpg"
-        print("treating mask : " + file_name)
+        print("treating mask "+start+" / "+number_of_masks)
+        start = start + 1
+        
         # image shape
         mask_image_open = Image.open(mask_image)
         w, h = mask_image_open.size
