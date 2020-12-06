@@ -13,10 +13,10 @@ def images_annotations_info(maskpath):
     
     # Get absolute paths of all files in a directory
     mask_images = absolute_file_paths(maskpath)
-    
+  
     for image_id, mask_image in enumerate(mask_images, 1):
         file_name = os.path.basename(mask_image).split('.')[0] + ".jpg"
-
+        print("treating mask : " + file_name)
         # image shape
         mask_image_open = Image.open(mask_image)
         w, h = mask_image_open.size
@@ -66,6 +66,6 @@ if __name__ == '__main__':
     for keyword in ['train', 'val']:
         mask_path = datasetpath + '{}_mask'.format(keyword)
         coco_format['images'], coco_format['annotations'] = images_annotations_info(mask_path)
-        #print(json.dumps(coco_format))
+        print("exporting json")
         with open(outputpath + '{}.json'.format(keyword),'w') as outfile:
             json.dump(coco_format, outfile)
