@@ -16,13 +16,13 @@ def images_annotations_info(maskpath):
     
     #get number of masks
     number_of_masks = len(mask_images)
-    print("found " + number_of_masks + " masks")
+    print("found " + str(number_of_masks) + " masks")
     
     start = 1
     
     for image_id, mask_image in enumerate(mask_images, 1):
         file_name = os.path.basename(mask_image).split('.')[0] + ".jpg"
-        print("treating mask "+start+" / "+number_of_masks)
+        print("treating mask "+str(start)+" / "+str(number_of_masks) +" ("+str(round(start/number_of_masks*100,1))+"%"+")")
         start = start + 1
         
         # image shape
