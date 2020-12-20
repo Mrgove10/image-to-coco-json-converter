@@ -20,7 +20,7 @@ def create_sub_masks(mask_image, width, height):
                 pixel_str = str(pixel)
                 sub_mask = sub_masks.get(pixel_str)
                 if sub_mask is None:
-                   # Create a sub-mask (one bit per pixel) and add to the dictionary
+                    # Create a sub-mask (one bit per pixel) and add to the dictionary
                     # Note: we add 1 pixel of padding in each direction
                     # because the contours module doesn't handle cases
                     # where pixels bleed to the edge of the image

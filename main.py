@@ -44,23 +44,22 @@ def images_annotations_info(maskpath):
                     polygons, segmentations = create_sub_mask_annotation(sub_mask)
 
                     # multipolygon categories
-            #     if(category_id == 0 or category_id == 2 or category_id == 4):
-            #         # Combine the polygons to calculate the bounding box and area
-            #         multi_poly = MultiPolygon(polygons)
-            #                         
-            #         annotation = create_annotation_format(multi_poly, segmentations, image_id, category_id, annotation_id)
-            #
-            #     annotations.append(annotation)
-            #         annotation_id += 1
-            #     else:
-                    for i in range(len(polygons)):
-                        # Cleaner to recalculate this variable
-                        segmentation = [np.array(polygons[i].exterior.coords).ravel().tolist()]
-                        
-                        annotation = create_annotation_format(polygons[i], segmentation, image_id, category_id, annotation_id)
-                        
+                    if category_id in multipart_ids:
+                    # Combine the polygons to calculate the bounding box and area
+                        multi_poly = MultiPolygon(polygons)
+                                        
+                        annotation = create_annotation_format(multi_poly, segmentations, image_id, category_id, annotation_id)
                         annotations.append(annotation)
                         annotation_id += 1
+                    else:
+                        for i in range(len(polygons)):
+                            # Cleaner to recalculate this variable
+                            segmentation = [np.array(polygons[i].exterior.coords).ravel().tolist()]
+                            
+                            annotation = create_annotation_format(polygons[i], segmentation, image_id, category_id, annotation_id)
+                            
+                            annotations.append(annotation)
+                            annotation_id += 1
             except:
                 print("An exception occurred") 
     return images, annotations

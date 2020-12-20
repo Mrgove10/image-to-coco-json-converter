@@ -6,3 +6,11 @@ category_ids = {
     '(0, 255, 102)': 3, # movable 
     '(204, 0, 255)': 4, # my car
 }
+
+multipart_ids = {
+    0,
+    1,
+    2,
+    3,
+    4
+}
