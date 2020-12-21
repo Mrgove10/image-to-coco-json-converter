@@ -1,6 +1,7 @@
 from create_annotations import *
 import argparse
 from category_colors import *
+from ignore_files import *
 parser = argparse.ArgumentParser()
 
 # Get 'images' and 'annotations' info 
